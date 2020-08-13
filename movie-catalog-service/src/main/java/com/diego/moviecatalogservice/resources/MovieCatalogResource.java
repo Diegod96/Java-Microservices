@@ -4,6 +4,7 @@ package com.diego.moviecatalogservice.resources;
 import com.diego.moviecatalogservice.models.CatalogItem;
 import com.diego.moviecatalogservice.models.Movie;
 import com.diego.moviecatalogservice.models.Rating;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,6 +17,9 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/catalog")
 public class MovieCatalogResource {
+
+    @Autowired
+    private RestTemplate restTemplate;
 
     @RequestMapping("/{userId}")
     public List<CatalogItem> getCatalog(@PathVariable("userId") String userId) {
